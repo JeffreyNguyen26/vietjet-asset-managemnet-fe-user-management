@@ -1,0 +1,36 @@
+@import '~@variables';
+
+.top-bar {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  padding: 7.5px 15px !important;
+  background-color: @light-background-color;
+  width: 100vw;
+  height: @top-bar-height;
+  box-shadow: @normal-box-shadow;
+  .page-title {
+    height: 20px;
+    .icon {
+      margin: 0 10px !important;
+      height: 20px;
+      fill: @primary-text-color;
+    }
+    .title {
+      height: fit-content !important;
+      margin: 0;
+      font-size: @label-font-size;
+      line-height: @label-font-size;
+      color: @primary-text-color;
+      font-weight: bolder;
+    }
+  }
+  .spaced-content{
+    >*{
+      margin: 0 5px 0 0;
+    }
+    &.content-floated-right >*{
+      margin: 0 0 0 5px;
+    }
+  }
+}
