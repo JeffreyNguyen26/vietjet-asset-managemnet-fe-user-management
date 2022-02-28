@@ -12,6 +12,7 @@ import {
   StoragePage,
 } from '@app/pages/admin';
 import UserManagementPage from '@app/pages/user-management/UsermanagementPage';
+import CreateUserPage from '@app/pages/CreateUserPage';
 
 const routes: HelperRoute[] = [
   {
@@ -32,6 +33,10 @@ const routes: HelperRoute[] = [
     path: '/account',
   },
   {
+    component: CreateUserPage,
+    path: '/create-account',
+  },
+  {
     component: RequestPage,
     path: '/request',
   },
@@ -42,12 +47,7 @@ const routes: HelperRoute[] = [
 ];
 
 const AdminRouter: React.FC<{ match: match }> = (props) => {
-  return (
-    <RouterRender
-      routerPath={props.match?.path}
-      helperRoutes={routes}
-    />
-  );
+  return <RouterRender routerPath={props.match?.path} helperRoutes={routes} />;
 };
 
 export default AdminRouter;

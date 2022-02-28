@@ -52,7 +52,6 @@ const TableWrapper = styled.div`
 `;
 const SearchBarWrapper = styled.div`
   margin-bottom: 8px;
-  
 `;
 const ToolbarWrapper = styled.div`
   display: flex;
@@ -171,6 +170,7 @@ const DataTable: <T extends object>(
   ) as DataTableInstance;
   // #endregion
 
+  //aaaaaaaaaaaaaaaaaaa
   // #region search
   const { search = false, onSearch } = props;
   useEffect(() => {

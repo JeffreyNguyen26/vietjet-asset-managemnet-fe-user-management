@@ -7,6 +7,9 @@ import usermock from '@app/assets/mock/user-management.json';
 // import DetailImage from '@app/components/image/details-image/DetailIMage';
 import NeumoButton from '@app/components/neumo-button/NeumoButton';
 import { Icon } from 'semantic-ui-react';
+import { isConstructorTypeNode } from 'typescript';
+import { useState, ChangeEvent, MouseEvent } from 'react';
+import CreateUser from '@app/pages/CreateUserPage';
 
 interface UserList {
   no: number;
@@ -16,7 +19,14 @@ interface UserList {
   status: string;
   details: any;
 }
+
+interface CreateUser {
+  showCreateUser: false;
+}
+
 const UserManagementPage: React.FC = () => {
+  const [modalPopUpPage, setModalPopUpPage] = useState(false);
+
   const columns = React.useMemo(
     (): Column<UserList>[] => [
       {
@@ -60,16 +70,32 @@ const UserManagementPage: React.FC = () => {
     [],
   );
 
+  const defaultProps: UserList[] = [];
+  const [searchList, setDataList]: [
+    UserList[],
+    (posts: UserList[]) => void,
+  ] = React.useState(defaultProps);
+  const [searchUser, setSearchUser]: [
+    string,
+    (search: string) => void,
+  ] = React.useState('');
+
+  const handleChange = (e: { target: { value: string } }) => {
+    setSearchUser(e.target.value);
+  };
+
   return (
     <>
       <div className="search-bar">
         <SearchBar />
+
         <NeumoButton
           raised
           shape="rectangular"
-          Icon={<Icon name="plus"/>}
+          Icon={<Icon name="plus" />}
           label="New User"
           highlighted
+          navLink={`create-account`}
         />
       </div>
       <DataTable columns={columns} data={data} />
